@@ -13,8 +13,8 @@ I tried to make this pipeline as automatic as possible. You just need to set som
 ## Useful info: 
 
 - I used **CAT12** for the segmentation as it gives more precise results than the **SPM**.
-- Make sure that before running the pipeline, you have downloaded the [Artifact Detection Tools (ART)](https://www.nitrc.org/projects/artifact_detect/) and have added its directory to the Matlab paths.
-- Make sure that your data is organized in the BIDS format:
+- Make sure that before running the pipeline, you have downloaded the [Artifact Detection Tools (ART)](https://www.nitrc.org/projects/artifact_detect/) and have added its directory to the Matlab paths. Also make sure that you have downloaded the [CAT12](https://neuro-jena.github.io/cat/) package and have put it in the **SPM toolbox** folder. 
+- The pipeline considers that your data is organized in the BIDS format as follows:
   ```
   Data_dir -->
               sub-XXX
@@ -43,5 +43,6 @@ I tried to make this pipeline as automatic as possible. You just need to set som
   ```
 - To run the pipeline, open the `preprocessing.mat` file, set the requested directories and parameters, and run the file.
 - If you need to change the hyperparmeters of different preprocessing steps, open the `func_PreprocBatch.mat` file, and set the parameters with your own values accordingly.
+- I have tested the pipeline on `macOS Sonoma Version 14.5` and it works without any error.
 
 **Do not hesitate to send your feedback to improve this piepline!**
