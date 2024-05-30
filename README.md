@@ -3,9 +3,15 @@
 This is an automatic fMRI preprocessing pipeline based on the [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) and [CAT12](https://neuro-jena.github.io/cat/). It consists of the following steps: 
 
 - Susceptibility distortion correction
-- Realignment
+  - VDM calculation based on the fieldmap phase and amplitude data. 
+- Realignment and Unwarp
+  - Simultaneous realignment of functional volumes and applying VDM.
 - Segmentation of the structural data
+  - It also creates a bias-corrected T1 image, normalizes it and all the extracted tissue masks to the MNI space, and outputs the forward and inverse transformation parameters.
+- Coregistration of the functional data into the T1 image.
+  - It aligns the functional data to the bias-corrected T1 image.
 - Normalization to the MNI space
+  - It uses the forward transformation parameters of the segmentation step, to normalize the functional data into the MNI space. 
 - Smoothing 
 
 I tried to make this pipeline as automatic as possible. You just need to set some directories and acquisition parameters, run the pipeline, and sit and drink your coffee!
