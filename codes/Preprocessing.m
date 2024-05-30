@@ -6,10 +6,11 @@ clear
 % --- Set the following directories --- 
 
 % Directory of the BIDS formated data:
-bids_dir = '/Users/sepehrmortaheb/MyDrive/LEIA/Projects/Parabolic-Flight/Data/fMRI/LEIA/raw_BIDS';
+bids_dir = '';
 % Save directory of the fMRI processing:
-out_func_dir = '/Users/sepehrmortaheb/MyDrive/LEIA/Projects/Parabolic-Flight/Results/fMRI/LEIA/preprocessed';
+save_dir = '';
 
+%##########################################################################
 % --- Set the Acquisition Parameters --- 
 
 % The name of the functional task
@@ -21,12 +22,14 @@ echo_time = [4.92 7.38];
 % Total EPI read-out time (ms)
 total_EPI_rot = 46.48;
 
+%##########################################################################
 % --- Set the Participants Information --- 
 
 % Subject list [Ex: {'sub-XXX'; 'sub-XXX'}]
 subj_list = {'sub-GD'};
 
-% --- Creating Handy Variables and AddPath Directories ---
+%##########################################################################
+% --- Creating Handy Variables and AddPath Required Directories ---
 
 % Directories Struct
 art_dir = which('art');
@@ -35,7 +38,7 @@ spm_dir = which('spm');
 spm_dir(end-4:end) = [];
 Dirs = struct();
 Dirs.bids = bids_dir; 
-Dirs.out = out_func_dir;
+Dirs.out = save_dir;
 Dirs.spm = spm_dir;
 Dirs.art = art_dir;
 
