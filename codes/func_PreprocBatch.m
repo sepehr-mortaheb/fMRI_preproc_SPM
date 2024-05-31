@@ -139,18 +139,27 @@ matlabbatch{7}.spm.tools.cat.estwrite.output.jacobianwarped = 0;
 matlabbatch{7}.spm.tools.cat.estwrite.output.warps = [1 1];
 matlabbatch{7}.spm.tools.cat.estwrite.output.rmat = 0;
 
+%% Coregistration of Functional Data to the T1 Space 
+matlabbatch{8}.spm.spatial.coreg.estimate.ref(1) = cfg_dep('Named File Selector: struct(1) - Files', substruct('.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','files', '{}',{1}));
+matlabbatch{8}.spm.spatial.coreg.estimate.source(1) = cfg_dep('Realign & Unwarp: Unwarped Mean Image', substruct('.','val', '{}',{6}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','meanuwr'));
+matlabbatch{8}.spm.spatial.coreg.estimate.other(1) = cfg_dep('Realign & Unwarp: Unwarped Images (Sess 1)', substruct('.','val', '{}',{6}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','sess', '()',{1}, '.','uwrfiles'));
+matlabbatch{8}.spm.spatial.coreg.estimate.eoptions.cost_fun = 'nmi';
+matlabbatch{8}.spm.spatial.coreg.estimate.eoptions.sep = [4 2];
+matlabbatch{8}.spm.spatial.coreg.estimate.eoptions.tol = [0.02 0.02 0.02 0.001 0.001 0.001 0.01 0.01 0.01 0.001 0.001 0.001];
+matlabbatch{8}.spm.spatial.coreg.estimate.eoptions.fwhm = [7 7];
+
 %% Normalization of Functional Data to the MNI Space 
-matlabbatch{8}.spm.spatial.normalise.write.subj.def(1) = cfg_dep('CAT12: Segmentation: Deformation Field', substruct('.','val', '{}',{7}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','fordef', '()',{':'}));
-matlabbatch{8}.spm.spatial.normalise.write.subj.resample(1) = cfg_dep('Realign & Unwarp: Unwarped Images (Sess 1)', substruct('.','val', '{}',{6}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','sess', '()',{1}, '.','uwrfiles'));
-matlabbatch{8}.spm.spatial.normalise.write.woptions.bb = [-Inf -Inf -Inf
+matlabbatch{9}.spm.spatial.normalise.write.subj.def(1) = cfg_dep('CAT12: Segmentation: Deformation Field', substruct('.','val', '{}',{7}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','fordef', '()',{':'}));
+matlabbatch{9}.spm.spatial.normalise.write.subj.resample(1) = cfg_dep('Coregister: Estimate: Coregistered Images', substruct('.','val', '{}',{8}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','cfiles'));
+matlabbatch{9}.spm.spatial.normalise.write.woptions.bb = [-Inf -Inf -Inf
                                                           Inf Inf Inf];
-matlabbatch{8}.spm.spatial.normalise.write.woptions.vox = [2 2 2];
-matlabbatch{8}.spm.spatial.normalise.write.woptions.interp = 4;
-matlabbatch{8}.spm.spatial.normalise.write.woptions.prefix = 'w';
+matlabbatch{9}.spm.spatial.normalise.write.woptions.vox = [2 2 2];
+matlabbatch{9}.spm.spatial.normalise.write.woptions.interp = 4;
+matlabbatch{9}.spm.spatial.normalise.write.woptions.prefix = 'w';
 
 %% Smoothing
-matlabbatch{9}.spm.spatial.smooth.data(1) = cfg_dep('Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{8}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
-matlabbatch{9}.spm.spatial.smooth.fwhm = [4 4 4];
-matlabbatch{9}.spm.spatial.smooth.dtype = 0;
-matlabbatch{9}.spm.spatial.smooth.im = 0;
-matlabbatch{9}.spm.spatial.smooth.prefix = 's';
+matlabbatch{10}.spm.spatial.smooth.data(1) = cfg_dep('Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{8}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
+matlabbatch{10}.spm.spatial.smooth.fwhm = [4 4 4];
+matlabbatch{10}.spm.spatial.smooth.dtype = 0;
+matlabbatch{10}.spm.spatial.smooth.im = 0;
+matlabbatch{10}.spm.spatial.smooth.prefix = 's';
