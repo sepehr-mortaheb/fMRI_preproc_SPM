@@ -1,4 +1,4 @@
-function func_Preproc(ffiles, sfile, Dirs, subj, AcqParams)
+function func_Preproc(inpfiles, Dirs, subj, AcqParams)
 
 save_path = Dirs.out; 
 subj_name = subj.name;
@@ -6,7 +6,7 @@ TR = AcqParams.tr;
 
 %% Run Preprocessing Batch
 spm fmri;
-matlabbatch = func_PreprocBatch(ffiles, sfile, AcqParams, Dirs);
+matlabbatch = func_PreprocBatch(files, sfile, AcqParams, Dirs);
 spm_jobman('run', matlabbatch)
 
 %% Deleting unnecessary files and moving results to the related folder

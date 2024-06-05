@@ -1,13 +1,13 @@
-function matlabbatch = func_PreprocBatch(ffiles, sfile, AcqParams, Dirs)
+function matlabbatch = func_PreprocBatch(inpfiles, AcqParams, Dirs)
 
 echo_time = AcqParams.et;
 total_EPI_rot = AcqParams.trot;
 
 spm_dir = Dirs.spm;
-fdata = ffiles{1};
-sdata = sfile;
-ampdata = ffiles{2};
-phasedata = ffiles{3};
+fdata = inpfiles{1};
+ampdata = inpfiles{2};
+phasedata = inpfiles{3};
+sdata = inpfiles{4};
 
 %% Reading the structural, functional, and fmap data 
 matlabbatch{1}.cfg_basicio.file_dir.file_ops.cfg_named_file.name = 'struct';
@@ -158,7 +158,7 @@ matlabbatch{9}.spm.spatial.normalise.write.woptions.interp = 4;
 matlabbatch{9}.spm.spatial.normalise.write.woptions.prefix = 'w';
 
 %% Smoothing
-matlabbatch{10}.spm.spatial.smooth.data(1) = cfg_dep('Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{8}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
+matlabbatch{10}.spm.spatial.smooth.data(1) = cfg_dep('Normalise: Write: Normalised Images (Subj 1)', substruct('.','val', '{}',{9}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('()',{1}, '.','files'));
 matlabbatch{10}.spm.spatial.smooth.fwhm = [4 4 4];
 matlabbatch{10}.spm.spatial.smooth.dtype = 0;
 matlabbatch{10}.spm.spatial.smooth.im = 0;
