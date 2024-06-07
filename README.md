@@ -1,6 +1,6 @@
 # An fMRI preprocessing pipelien 
 
-This is an automatic fMRI preprocessing pipeline based on the [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) and [CAT12](https://neuro-jena.github.io/cat/). It consists of the following steps: 
+This is an automatic fMRI spatial preprocessing pipeline based on the [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) and [CAT12](https://neuro-jena.github.io/cat/) that can be used for both task-based and resting-state fMRI data. It consists of the following steps: 
 
 - Susceptibility distortion correction
   - VDM calculation based on the fieldmap phase and amplitude data. 
