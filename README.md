@@ -1,4 +1,4 @@
-# An fMRI preprocessing pipelien 
+# An fMRI preprocessing pipeline 
 
 This is an automatic fMRI spatial preprocessing pipeline based on the [SPM12](https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) and [CAT12](https://neuro-jena.github.io/cat/) that can be used for both task-based and resting-state fMRI data. It consists of the following steps: 
 
@@ -47,8 +47,8 @@ I tried to make this pipeline as automatic as possible. You just need to set som
                                             sub-ZZZ_ses-zzz_task-<TaskName>_bold.json
                                             sub-ZZZ_ses-zzz_task-<TaskName>_bold.nii
   ```
-- To run the pipeline, open the `preprocessing.mat` file, set the requested directories and parameters, and run the file.
-- If you need to change the hyperparmeters of different preprocessing steps, open the `func_PreprocBatch.mat` file, and set the parameters with your own values accordingly.
+- To run the pipeline, open the `preprocessing.m` file, set the requested directories and parameters, and run the file.
+- If you need to change the hyperparmeters of different preprocessing steps, open the `func_PreprocBatch.m` file, and set the parameters with your own values accordingly.
 - I have tested the pipeline on `macOS Sonoma Version 14.5` and it works without any error.
 
-**Do not hesitate to send your feedback to improve this piepline!**
+**Do not hesitate to send your feedback to improve this pipeline!**
