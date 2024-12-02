@@ -1,4 +1,4 @@
-function func_Preproc(inpfiles, Dirs, subj, AcqParams, pipeline)
+function func_Preproc(inpfiles, Dirs, subj, AcqParams)
 
 save_path = Dirs.out; 
 subj_name = subj.name;
@@ -6,20 +6,8 @@ TR = AcqParams.tr;
 
 %% Run Preprocessing Batch
 spm fmri;
-switch pipeline
-    case 1
-        matlabbatch = func_PreprocBatch_1(inpfiles, AcqParams, Dirs);
-    case 2
-        matlabbatch = func_PreprocBatch_2(inpfiles, AcqParams, Dirs);
-    case 10
-        matlabbatch = func_PreprocBatch_10(inpfiles, AcqParams, Dirs);
-    case 11
-        matlabbatch = func_PreprocBatch_11(inpfiles, AcqParams, Dirs);
-    case 100
-        matlabbatch = func_PreprocBatch_100(inpfiles, AcqParams, Dirs);
-    case 101
-        matlabbatch = func_PreprocBatch_101(inpfiles, AcqParams, Dirs);
-end
+
+matlabbatch = func_PreprocBatch_1(inpfiles, AcqParams, Dirs);
 
 spm_jobman('run', matlabbatch)
 

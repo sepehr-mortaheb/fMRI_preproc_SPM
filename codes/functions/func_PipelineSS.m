@@ -1,4 +1,4 @@
-function func_PipelineSS(Dirs, subj, AcqParams, pipeline)
+function func_PipelineSS(Dirs, subj, AcqParams)
 
 out_dir = Dirs.out;
 task_name = AcqParams.name;
@@ -16,6 +16,6 @@ for i = 1:numel(ses_list)
     inpfiles = func_ReadFiles(subj, ses, task_name);
     
     % perform preprocessing
-    func_Preproc(inpfiles, Dirs, subj, AcqParams, pipeline)
+    func_Preproc(inpfiles, Dirs, subj, AcqParams)
     close all
 end

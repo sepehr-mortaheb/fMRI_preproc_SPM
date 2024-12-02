@@ -1,4 +1,4 @@
-function matlabbatch = func_PreprocBatch_2(inpfiles, AcqParams, Dirs)
+function matlabbatch = func_PreprocBatch(inpfiles, AcqParams, Dirs)
 
 stc_num = AcqParams.nslc;
 stc_ord = AcqParams.ordslc;

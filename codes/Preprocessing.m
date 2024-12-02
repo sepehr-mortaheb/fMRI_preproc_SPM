@@ -11,14 +11,6 @@ bids_dir = '';
 save_dir = '';
 
 %##########################################################################
-% --- Pipeline Steps ---
-
-% Slice Timing Correction? 0:No, 1:Yes
-STC = 1; 
-% Susceptibility Distortion Correction? 0:No, 1:VDM(SPM), 2:TopUp(FSL)
-SDC = 0; 
-
-%##########################################################################
 % --- Set the Acquisition Parameters --- 
 
 % ------ General Parmaeters ------
@@ -92,16 +84,7 @@ addpath('./functions');
 
 %% Functional Pipeline 
 
-% Which pipeline:
-pipeline = 10^SDC + STC; 
-% 1: SDC=0, STC=0
-% 2: SDC=0, STC=1
-% 10: SDC=1, STC=0
-% 11: SDC=1, STC=1
-% 100: SDC=2, STC=0
-% 101: SDC=2, STC=1
-
 for subj_num = 1:numel(subj_list)
     subj = subj_list{subj_num};
-    func_PipelineSS(Dirs, Subjects(subj_num), AcqParams, pipeline);
+    func_PipelineSS(Dirs, Subjects(subj_num), AcqParams);
 end
