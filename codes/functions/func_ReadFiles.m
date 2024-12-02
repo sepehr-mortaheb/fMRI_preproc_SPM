@@ -1,7 +1,18 @@
 function out = func_ReadFiles(subj, ses, task_name)
 
-fdata = fullfile(subj.dir, ses, 'func', [subj.name '_' ses '_task-' task_name '_bold.nii']);
-sdata = fullfile(subj.dir, ses, 'anat', [subj.name '_' ses '_T1w.nii']);
+ffiles = dir(fullfile(subj.dir, ses, 'func'));
+ffiles = ffiles(3:end);
+sfiles = dir(fullfile(subj.dir, ses, 'anat'));
+sfiles = sfiles(3:end);
+
+fdata = ffiles(contains({files.name}, subj.name) & ...
+               contains({files.name}, ses) & ...
+               contains({files.name}, ['task-' task_name]) & ...
+               contains({files.name}, 'bold.nii'));
+           
+sdata = sfiles(contains({files.name}, subj.name) & ...
+               contains({files.name}, ses) & ...
+               contains({files.name}, 'T1w.nii'));
 
 fmap_files = dir(fullfile(subj.dir, ses, 'fmap'));
 for i = 1:numel(fmap_files)

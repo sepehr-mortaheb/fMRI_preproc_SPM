@@ -1,7 +1,8 @@
-function matlabbatch = func_PreprocBatch(inpfiles, AcqParams, Dirs)
+function matlabbatch = func_PreprocBatch_2(inpfiles, AcqParams, Dirs)
 
-echo_time = AcqParams.et;
-total_EPI_rot = AcqParams.trot;
+stc_num = AcqParams.nslc;
+stc_ord = AcqParams.ordslc;
+stc_ref = AcqParams.refslc;
 
 spm_dir = Dirs.spm;
 fdata = inpfiles{1};
